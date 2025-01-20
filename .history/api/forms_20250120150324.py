@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate
 class CustomUserCreationForm(UserCreationForm):
     hobbies = forms.ModelMultipleChoiceField(
         queryset=Hobby.objects.all(),
-        widget=forms.SelectMultiple(attrs={'id': 'hobbies-select'}),  # Add an ID for JavaScript targeting
+        widget=forms.CheckboxSelectMultiple,  # Displays hobbies as checkboxes
         required=False
     )
 

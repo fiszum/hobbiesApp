@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %} 
+{% block content %}
+<style>
+  .form-container {
+    max-width: 30rem; 
+    margin: 0 auto; /*Centers form */
+    padding: 2rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.3rem;
+    background-color: #f9f9f9; 
+  }
+
+  .form-container button[type="submit"]{
+    border-radius: 0.3rem;
+  }
+</style>
+
+<div class ="form-container">
+    <h2>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+
+    <button class="signup-btn" onclick="window.location.href='/register';">
+      Sign Up
+    </button>
+</div>
+{% endblock %}
